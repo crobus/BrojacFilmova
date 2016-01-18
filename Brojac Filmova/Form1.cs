@@ -52,7 +52,8 @@ namespace Brojac_Filmova
 
         private void button3_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Remove(listBox1.SelectedItem);
+            
+            MessageBox.Show("Tero gej");
         }
 
         
