@@ -12,6 +12,8 @@ namespace Brojac_Filmova
 {
     public partial class Form1 : Form
     {
+        public IEnumerable<String> ListaFilmova { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +23,8 @@ namespace Brojac_Filmova
         {
             var watchedMovies = 0;
 
-            foreach (string line in System.IO.File.ReadLines("C:\\Users\\Buske\\My documents\\filmtest.txt"))
+            ListaFilmova = System.IO.File.ReadLines("C:\\Users\\Buske\\My documents\\filmtest.txt");
+            foreach (string line in ListaFilmova)
             {
                 listBox1.Items.Add(line);
 
@@ -41,7 +44,13 @@ namespace Brojac_Filmova
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            var selectedIndex = listBox1.Items.IndexOf(listBox1.SelectedItem);
+            var selectedText = listBox1.SelectedItem;
+            var text = textBox1.Text;
+
+            MessageBox.Show(
+                String.Format("New text: {0}; Selected item: {1}; Selected index: {2}", text, selectedText, selectedIndex)
+            );
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
